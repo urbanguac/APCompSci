@@ -1,0 +1,37 @@
+00000002 <I> <STDOUT> javaversion: 1.5.0_14
+00000198 <I> <SplashScreen> Progress:5% Validating software license...
+00000327 <I> <com.ti.eps.emu84.app.License> Loading license manager for: TI-SmartView84 ver:1.0
+00000393 <W> <STDERR> Error setting log configuration: Couldn't get lock for sda-%u.log
+00000394 <W> <STDERR> java.io.IOException: Couldn't get lock for sda-%u.log
+00000395 <W> <STDERR> 	at java.util.logging.FileHandler.openFiles(Unknown Source)
+00000401 <W> <STDERR> 	at java.util.logging.FileHandler.<init>(Unknown Source)
+00000402 <W> <STDERR> 	at com.ti.eps.sda.SDALogConfig.initialize(SDALogConfig.java:62)
+00000403 <W> <STDERR> 	at com.ti.eps.sda.SDALoader.loadLicenseMgr(SDALoader.java:336)
+00000406 <W> <STDERR> 	at com.ti.eps.sda.SDALMAccess.loadLicenseMgr(SDALMAccess.java:341)
+00000407 <W> <STDERR> 	at com.ti.eps.sda.SDALMAccess.loadLicenseMgr(SDALMAccess.java:77)
+00000408 <W> <STDERR> 	at com.ti.eps.emu84.app.License.loadSDALicenseManager(License.java:299)
+00000408 <W> <STDERR> 	at com.ti.eps.emu84.app.License.initActivation(License.java:749)
+00000409 <W> <STDERR> 	at com.ti.eps.emu84.app.License.<init>(License.java:54)
+00000410 <W> <STDERR> 	at com.ti.eps.emu84.app.ApplicationMainForm.<init>(ApplicationMainForm.java:346)
+00000411 <W> <STDERR> 	at com.ti.eps.emu84.app.ApplicationMainForm.createAndShowGUI(ApplicationMainForm.java:1750)
+00000412 <W> <STDERR> 	at com.ti.eps.emu84.app.ApplicationMainForm.access$200(ApplicationMainForm.java:142)
+00000413 <W> <STDERR> 	at com.ti.eps.emu84.app.ApplicationMainForm$5.run(ApplicationMainForm.java:2591)
+00000414 <W> <STDERR> 	at java.lang.Thread.run(Unknown Source)
+00000746 <I> <com.ti.eps.emu84.app.License> Loaded license manager...
+00000747 <I> <com.ti.eps.emu84.app.License> Acquiring license for: TI-SmartView84 ver:1.0
+00001248 <I> <com.ti.eps.activation.jni.Activation> SDA jar Version:3,0,0,245
+00001271 <I> <com.ti.eps.activation.jni.Activation> SLAS lib Build Type:I
+00001281 <I> <com.ti.eps.activation.jni.Activation> loading slas-admin
+00001372 <I> <com.ti.eps.activation.jni.Activation> loaded slas-admin
+00001377 <I> <com.ti.eps.activation.jni.Activation> No proxy info set...
+00001378 <I> <STDOUT> initJNILogging: jni.log
+00001394 <I> <STDOUT> Finish initting JNI logging
+00004720 <I> <com.ti.eps.sda.migrate.SDAMigrator>     isPaidVersionForMigration, result: false
+00004721 <E> <com.ti.eps.emu84.app.License> Found expired license:c18
+00004775 <W> <java.util.prefs> Could not open windows registry node Software\JavaSoft\Prefs\/Texas /Instruments\/T/I/Activation/Wizard at root 0x80000002. Windows RegOpenKey(...) returned error code 5.
+00004782 <E> <com.ti.eps.activation.utils.ActivationPreference> Backing store is unavailable:
+Could not open windows registry node Software\JavaSoft\Prefs\/Texas /Instruments\/T/I/Activation/Wizard at root 0x80000002: Access denied
+00004785 <I> <STDOUT> loading progress bar ActivationUI...
+00004793 <I> <com.ti.eps.emu84.app.License> launch UI - License folder:C:\ProgramData\TI-SmartView 84\license
+00010550 <E> <com.ti.eps.activation.wizard.CustomWizard> returnCode on closing : 1
+00010551 <E> <com.ti.eps.activation.wizard.CustomWizard> ActivationStatus: false, AppId: SmartView, ExitCode: 0

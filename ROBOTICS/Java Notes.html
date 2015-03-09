@@ -1,0 +1,473 @@
+<html>
+<head>
+<script>
+// CREDITS:
+// Snowmaker Copyright (c) 2003 Peter Gehrig. All rights reserved.
+// Distributed by Hypergurl
+// Permission given to use the script provided that this notice remains as is.
+
+// Set the number of snowflakes (more than 30 - 40 not recommended)
+var snowmax=35
+
+// Set the colors for the snow. Add as many colors as you like
+var snowcolor=new Array("#aaaacc","#ddddFF","#ccccDD", "#ffffff")
+
+// Set the fonts, that create the snowflakes. Add as many fonts as you like
+var snowtype=new Array("Arial Black","Arial Narrow","Times","Comic Sans MS","Century Gothic")
+
+// Set the letter that creates your snowflake (recommended:*)
+var snowletter="*"
+
+// Set the speed of sinking (recommended values range from 0.3 to 2)
+var sinkspeed=0.6
+
+// Set the maximal-size of your snowflaxes
+var snowmaxsize=40
+
+// Set the minimal-size of your snowflaxes
+var snowminsize=15
+
+// Set the snowing-zone
+// Set 1 for all-over-snowing, set 2 for left-side-snowing 
+// Set 3 for center-snowing, set 4 for right-side-snowing
+var snowingzone=1
+
+///////////////////////////////////////////////////////////////////////////
+// CONFIGURATION ENDS HERE
+///////////////////////////////////////////////////////////////////////////
+
+
+// Do not edit below this line
+var snow=new Array()
+var marginbottom
+var marginright
+var timer
+var i_snow=0
+var x_mv=new Array();
+var crds=new Array();
+var lftrght=new Array();
+var browserinfos=navigator.userAgent 
+var ie5=document.all&&document.getElementById&&!browserinfos.match(/Opera/)
+var ns6=document.getElementById&&!document.all
+var opera=browserinfos.match(/Opera/)  
+var browserok=ie5||ns6||opera
+
+function randommaker(range) {		
+	rand=Math.floor(range*Math.random())
+    return rand
+}
+
+function initsnow() {
+	if (ie5 || opera) {
+		marginbottom = document.body.clientHeight
+		marginright = document.body.clientWidth
+	}
+	else if (ns6) {
+		marginbottom = window.innerHeight
+		marginright = window.innerWidth
+	}
+	var snowsizerange=snowmaxsize-snowminsize
+	for (i=0;i<=snowmax;i++) {
+		crds[i] = 0;                      
+    	lftrght[i] = Math.random()*15;         
+    	x_mv[i] = 0.03 + Math.random()/10;
+		snow[i]=document.getElementById("s"+i)
+		snow[i].style.fontFamily=snowtype[randommaker(snowtype.length)]
+		snow[i].size=randommaker(snowsizerange)+snowminsize
+		snow[i].style.fontSize=snow[i].size
+		snow[i].style.color=snowcolor[randommaker(snowcolor.length)]
+		snow[i].sink=sinkspeed*snow[i].size/5
+		if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+		if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+		if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+		if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+		snow[i].posy=randommaker(6*marginbottom-marginbottom-6*snow[i].size)
+		snow[i].style.left=snow[i].posx
+		snow[i].style.top=snow[i].posy
+	}
+	movesnow()
+}
+
+function movesnow() {
+	for (i=0;i<=snowmax;i++) {
+		crds[i] += x_mv[i];
+		snow[i].posy+=snow[i].sink
+		snow[i].style.left=snow[i].posx+lftrght[i]*Math.sin(crds[i]);
+		snow[i].style.top=snow[i].posy
+		
+		if (snow[i].posy>=marginbottom-6*snow[i].size || parseInt(snow[i].style.left)>(marginright-3*lftrght[i])){
+			if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+			if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+			if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+			if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+			snow[i].posy=0
+		}
+	}
+	var timer=setTimeout("movesnow()",50)
+}
+
+for (i=0;i<=snowmax;i++) {
+	document.write("<span id='s"+i+"' style='position:absolute;top:-"+snowmaxsize+"'>"+snowletter+"</span>")
+}
+if (browserok) {
+	window.onload=initsnow
+}
+</script>
+<title>INTRO NOTES</title>
+</head>
+<body style="background-color: green;font-family:Century Gothic;">
+<div style="overflow:scroll;height:900px;padding-right:200;padding-left:150;background-color: lightgrey;">
+<h1>INTRODUCTORY NOTES</h1>
+<h1> AP Comp Sci Notes - Priansh Shah </h1>
+<h1>Day 1</h1>
+<h2> <b> Java Program Life Cycle</b> </h2>
+<ul>
+	<li> Write With Source code <ul> <li> .java </li> </ul> </li>
+	<li> the compiler will translate into <u> byte code </u> <ul> <li> .class </li> </ul> </li>
+	<li> the JVM == Java Virtual Machine <ul> <li> Byte code to machine language </li> <li> Binary, no extension </li> </ul> </li>
+</ul>
+<h2><b>Hello World</b></h2>
+<p> * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package HelloWorld;
+
+/**
+ *
+ * @author priansh.shah
+ */
+public class HelloWorld {
+      /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.print("Hello World!");
+    }
+}
+</p>
+<h2><b>Class Header</b></h2>
+<ul> <li>public class Name {</li><li>class name = pkg name </li></ul>
+<h2><b>Main Method Header</b></h2>
+<ul><li>PSVM</li><li>Java looks for this every time, needed</li></ul>
+<h2><b>System.out</b></h2>
+<ul><li>Object that displays text in the output window</li><li>print/println methods<ul><li>print displays text</li><li>println displays text in a new line</li></ul></li><li>You must set the parameters for the method<ul><li>info used by method to complete a task</li><li>in parenthesis</li><li>print/println has a String paremeter<ul><li>String is a string of characters in quotes</li></ul></li></ul></li></ul>
+<h2><b>Punctuation</b></h2>
+<ul>
+	<li>open/close curly brackets begin/end a class and a method body</li>
+	<li>Semicolon at the end of a statement</li>
+</ul>
+<h2><b>White Space/Indentation</b></h2>
+<ul>
+	<li>Technically doesn't matter</li>
+	<li>Easier to read</li>
+	<li>1 tab indent for each inner component<ul><li>Class<ul><li>Method<ul><li>Statements</li></ul></li></ul></li></ul></li>
+</ul>
+<h2><b>Homework Day 9/9/14</b></h2>
+<ul>
+	<li>Print: <ul><li>Name</li><li>Address</li><li>Phone</li></ul></li>
+	<li>Hand-write</li>
+	<li>Solution: Use three System.out.println statements to print each line of information.</li>
+</ul>
+<h1>Day 2</h1>
+<h2><b>Escape Sequences</b></h2>
+<ul>
+	<li> \n : new line</li>
+	<li> \t : tab</li>
+	<li> \": "</li>
+	<li> \\: \</li>
+	<li> System.out.print("Hi \n"); == System.out.println("Hi");</li>
+	<li>Sout("Title:\tWord:); prints out Title:	Word</li>
+</ul>
+<h2><b>Variables and Operators</b></h2>
+<ul>
+	<li>Variable stores a value</li>
+	<li>Primitive Data Types: (bits = binary digit) (_ _ _ _ _ _ _ _ = up to 255)<ul>
+	<li>Integers:<ul><li>int: 32 bits, +/- 2 Billion</li><li>byte: 8 bits, -128 -> 127</li><li>short:16 bits, -256 -> 256</li><li>long: 64 bits, BIG</li></ul></li>
+	<li>Floating Point
+	<ul>
+		<li>float</li>
+		<li>double</li>
+	</ul>
+	</li>
+	<li>Characters:
+	<ul>
+		<li>char</li>
+	</ul>
+	</li>
+	<li>Boolean = boolean, true/false</li>
+	</ul></li>
+</ul>
+<h2><b>Rules/Conventions for naming Variables</b></h2>
+<ul>
+	<li>Case Sensitive</li>
+	<li>Begin w/ letter, then #'s & symbols</li>
+	<li>NO SPACE</li>
+	<li>Full, meaningful names</li>
+	<li>Single Word
+	<ul>
+		<li>All lower case</li>
+	</ul>
+	</li>
+	<li>Multiple Words
+	<ul>
+		<li>lowerThenUpper</li>
+	</ul>
+	</li>
+	<li>Constants
+	<ul>
+		<li>ALL_UPPER</li>
+	</ul>
+	</li>
+</ul>
+<h2><b>Variable Declaration</b></h2>
+<ul>
+	<li>int roomNumber = 247;</li>
+	<li>Declaration:<ul><li>int roomNumber;</li><li>int age</li><li>char letter</li><li>boolean inLove</li></ul></li>
+	<li>Assigning<ul><li>age = 20; &nbsp age=21;</li><li>letter = 'f';</li><li>inLove = true;</li></ul></li>
+</ul>
+<h1>Day 3</h1>
+<h2><b>Concatanation</b></h2>
+<ul>
+	<li>Combines two strings
+	<ul>
+		<li>int age=17;</li>
+		<li>System.out.print("I am "+ age + "years old.");</li>
+		<li>System.out.print("If you're typing a lot of words and" + " need another line, you can cancatanate" + "multiple strings.");</li>
+	</ul>
+	</li>
+</ul>
+<h2><b>Arithmetic Operators</b></h2>
+<ul>
+	<li> + - * / % </li>
+	<li> PEMD(Remainder)AS </li>
+</ul>
+<b>Using variables in addition: </b><br></br>
+<code>int x = 5; <br></br>
+int y = 4; <br></br> 
+x = x + 2xy; <br></br>
+ //cannot put in parenthesis normally <br></br>
+x = 2*(x+y); <br></br>
+int z = x+y; <br></br> 
+Sout(x+" " + y + " " + z); <br></br>
+Sout(x + y + z);</code>
+<h1>Day 4</h1>
+<h2><b>Mixed Mode Arithmetic</b></h2>
+<ul>
+	<li>Integers always yield integers, may truncate decimals</li>
+	<li>Doublies yield doubles, overrule integers</li>
+	<li>Automatically promotes to large data type or a floating point</li>
+</ul>
+<ol>
+	<li><code>int a = 3/2 * 5; //five</code></li>
+	<li><code>double b = 3/2 *5; //5.0</code></li>
+	<li><code>double c = 3.0/2 * 5; //7.5</code></li>
+	<li><code>int d = 3.0/2 * 5; //7</code></li>
+	<li><code>double e = 3.0/2 * 5 //ERROR</code></li>
+	<li><code>double f = 3/2* 5.0; //5.0</code></li>
+</ol>
+<h2><b>Remainder Operator % (modulus)</b></h2>
+<ol>
+	<li>3 % 2 = 1</li>
+	<li> 16 % 12 = 4</li>
+	<li>35 % 5 = 0</li>
+	<li> 17 % 2 = 1</li>
+	<li>63 % 24 = 15</li>
+</ol>
+<h2><b>Casting</b></h2>
+<ul>
+	<li>Converts from one data type to another</li>
+	<li><code>int x = (int) 3.14; //x = 3</code></li>
+	<li><code>int y = (int) (3/2 * 5.0); //5</code></li>
+	<li><code>int z = (int)3/2 *5;</code>//5.0, ERROR</li>
+</ul>
+<h1>Day 5</h1>
+<h2><b>Objects And Classes</b></h2>
+<ul><b>Values and Variables</b>
+	<li>Values have a type
+	<ul>
+		<li>"Hello" --> String</li>
+		<li>6 --> int</li>
+		<li>System.out --> PrintStream</li>
+	</ul>
+	</li>
+	<li>Store values in a variable with <ul><li>Type</li><li>Name</li></ul></li>
+	<li>The Type tells us
+	<ul>
+		<li>What we know about a variable
+		<ul><li>ex: int: integers, [-2billion, 2 billion], +, -, *, /, %</li></ul>
+		</li>
+		<li>What an object can do
+		<ul>
+			<li>Print Stream: print strings, variables; println, printf</li>
+			<li>String: multiple chars, many methods available</li>
+		</ul>
+		</li>
+	</ul></li>
+</ul>
+<h2><b>Objects</b></h2>
+<ul>
+	<li>An object is an entity that can perform tasks
+		<ul><li>Store multiple variables</li></ul></li>
+	<li>Objects have:
+		<ul><li>Behavior: defined by <u>methods</u> in a class</li><li>State: information/data: <u>Instance Variables</u> w/ particular value, which can be changed by methods</li>
+		<li>Identity: distinguish itself from other objects</li></ul></li>
+</ul>
+<h2><b>Example Objects</b></h2>
+<ul>
+	<li><u>Student Object</u></li>
+	<ul>
+		<li>Behaviors: Study, write, listen, talk, AHall violence</li>
+		<li>State: name, gpa, studentID, homeroom, grade, gender</li>
+		<li>Identity: </li>
+	</ul>
+	<li><u>Dog</u></li>
+	<ul>
+		<li>Behaviors: poop, bark, bite, chaseTail</li>
+		<li>State: breed, furColor, gender, isStray</li>
+		<li>Identity: ITS A DOG</li>
+	</ul>
+</ul>
+<h2><b>Methods</b></h2>
+<ul>
+	<li>Call on an object *ALWAYS* (UNLESS NON-STATIC)</li>
+	<ul>
+		<li>ex: objectName.method(parameters);</li>
+	</ul>
+	<li>Static methods call on the class</li>
+	<ul>
+		<li>ex: ClassName.method(Parameter);</li>
+	</ul>
+	<li>Performs a sequence of instructions defined by the class using objects <i>instance</i> variables</li>
+	<li>We don't know how a method is defined</li>
+	<ul>
+		<li>We know the</li>
+		<ul>
+			<li>precondition: assumption that the user must make sure is met</li>
+			<li>post condition:what should still be true after the method call</li>
+			<li>The purpose/potential outcome of using the method</li>
+		</ul>
+	</ul>
+	<li>Parameters</li>
+	<ul>
+		<li>Can have, 0, 1, 2...</li>
+		<li>info method needs to perform an action</li>
+	</ul>
+	<li>Return types</li>
+</ul>
+<h1>Day 6</h1>
+<h2><b>Memory</b></h2>
+<ul>
+	<li> While exceeding, the memory must hold</li>
+	<ul>
+		<li>All classes used, in compiled form</li>
+		<li>Variables that refer to objects (Reference Variable)</li>
+		<li>Objects themselves, only as needed</li>
+		<ul>
+			<li>plus their instance variable</li>
+		</ul>
+	</ul>
+	<li>Garbage Collection</li>
+	<ul>
+		<li>Memory is closed as objects are no longer needed/referenced the code</li>
+	</ul>
+</ul>
+<h2>API</h2>
+	<ul>
+		<li>charAt</li>
+		<li>equals</li>
+		<li>length</li>
+		<li>string(int)</li>
+		<li>string(int,int)</li>
+		<li>indexOf</li>
+		<li>composeTo</li>
+	</ul>
+<h1>Day 7</h1>
+<h2>Encapsulation</h2>
+	<ul>
+		<li>one entity that contains data and performs actions</li>
+	</ul>
+<h2>Math</h2>
+<ul>
+<li>Math.sqrt --> double</li>
+<li>Math.random --> [0.0,1.0)</li>
+<li>Math.pow --> base,exp</li>
+<li>Math.abs --> double</li>
+<li>Math.round</li>
+<li>Math.ceil</li>
+</ul>
+<h1>Day 8</h1>
+<h2>Scanner</h2>
+<ul>
+<li>next - returns next word</li>
+<li>nextInt - next int</li>
+<li>nextDouble - next double</li>
+<li>nextLine - next line</li>
+</ul>
+<h1>Day 9</h1>
+<h2>Objects and Reference Variables</h2>
+<ul>
+	<li>Primitive Variables</li>
+		<ul>
+			<li>int x = 4;</li>
+		</ul>
+	<li>Reference Variables</li>
+		<ul>
+			<li>Scanner scan = new Scanner(System.in);</li>
+			<li>Linked to object</li>
+		</ul>
+	<li>Initializing</li>
+		<ul>
+			<li>int num; //declared</li>
+			<li>num = 14; //assigned</li>
+			<li>int num = 5; //declared and assigned</li>
+		</ul>
+</ul>
+<h2>Creating Objects/Instantiation/Constructing</h2>
+<ul>
+	<li> className referenceName = new ClassName(Parameterers);</li>
+		<ul>
+			<li>Scanner piggy = new Scanner(System.in);</li>
+			<li>Student t = new Student("Tina");</li>
+			<li>String x = new String("Hi");</li>
+			<li>int[] numbers = new int[];</li>
+		</ul>
+</ul>
+<h2>Objects</h2>
+<ul>
+	<li>Declare: Student t;</li>
+	<li>Instantiate: new Student("Joe");</li>
+	<li>Assign: Student t <b><u>=</u></b> new Student("Joe");</li>
+</ul>
+<h3>Alias</h3>
+<ul>
+	<li>An object can have multiple references</li>
+</ul>
+<ol>
+<li>
+<ol>
+	<li>Dog d1 = new Dog();</li>
+	<li>Dog d2 = new Dog();</li>
+</ol>
+</li>
+<li>
+<ol>
+	<li>Dog d3 = d2;</li>
+</ol>
+</li>
+<li>
+<ol>
+	<li>d3 = d1;</li>
+</ol>
+</li>
+<li>
+<ol>
+	<li>d3 = null;</li>
+</ol>
+</li>
+<li>d1 = null;</li>
+</ol>
+</div>
+</body>
+</html>

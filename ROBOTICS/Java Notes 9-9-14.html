@@ -1,0 +1,171 @@
+<html>
+<body style="background-color: lightblue;font-family:Century Gothic;">
+<div style="padding-right:200;padding-left:100;">
+<h1> AP Comp Sci Notes - Priansh Shah </h1>
+<h1>Day 1</h1>
+<h2> <b> Java Program Life Cycle</b> </h2>
+<ul>
+	<li> Write With Source code <ul> <li> .java </li> </ul> </li>
+	<li> the compiler will translate into <u> byte code </u> <ul> <li> .class </li> </ul> </li>
+	<li> the JVM == Java Virtual Machine <ul> <li> Byte code to machine language </li> <li> Binary, no extension </li> </ul> </li>
+</ul>
+<h2><b>Hello World</b></h2>
+<p> * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package HelloWorld;
+
+/**
+ *
+ * @author priansh.shah
+ */
+public class HelloWorld {
+      /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.print("Hello World!");
+    }
+}
+</p>
+<h2><b>Class Header</b></h2>
+<ul> <li>public class Name {</li><li>class name = pkg name </li></ul>
+<h2><b>Main Method Header</b></h2>
+<ul><li>PSVM</li><li>Java looks for this every time, needed</li></ul>
+<h2><b>System.out</b></h2>
+<ul><li>Object that displays text in the output window</li><li>print/println methods<ul><li>print displays text</li><li>println displays text in a new line</li></ul></li><li>You must set the parameters for the method<ul><li>info used by method to complete a task</li><li>in parenthesis</li><li>print/println has a String paremeter<ul><li>String is a string of characters in quotes</li></ul></li></ul></li></ul>
+<h2><b>Punctuation</b></h2>
+<ul>
+	<li>open/close curly brackets begin/end a class and a method body</li>
+	<li>Semicolon at the end of a statement</li>
+</ul>
+<h2><b>White Space/Indentation</b></h2>
+<ul>
+	<li>Technically doesn't matter</li>
+	<li>Easier to read</li>
+	<li>1 tab indent for each inner component<ul><li>Class<ul><li>Method<ul><li>Statements</li></ul></li></ul></li></ul></li>
+</ul>
+<h2><b>Homework Day 9/9/14</b></h2>
+<ul>
+	<li>Print: <ul><li>Name</li><li>Address</li><li>Phone</li></ul></li>
+	<li>Hand-write</li>
+	<li>Solution: Use three System.out.println statements to print each line of information.</li>
+</ul>
+<h1>Day 2</h1>
+<h2><b>Escape Sequences</b></h2>
+<ul>
+	<li> \n : new line</li>
+	<li> \t : tab</li>
+	<li> \": "</li>
+	<li> \\: \</li>
+	<li> System.out.print("Hi \n"); == System.out.println("Hi");</li>
+	<li>Sout("Title:\tWord:); prints out Title:	Word</li>
+</ul>
+<h2><b>Variables and Operators</b></h2>
+<ul>
+	<li>Variable stores a value</li>
+	<li>Primitive Data Types: (bits = binary digit) (_ _ _ _ _ _ _ _ = up to 255)<ul>
+	<li>Integers:<ul><li>int: 32 bits, +/- 2 Billion</li><li>byte: 8 bits, -128 -> 127</li><li>short:16 bits, -256 -> 256</li><li>long: 64 bits, BIG</li></ul></li>
+	<li>Floating Point
+	<ul>
+		<li>float</li>
+		<li>double</li>
+	</ul>
+	</li>
+	<li>Characters:
+	<ul>
+		<li>char</li>
+	</ul>
+	</li>
+	<li>Boolean = boolean, true/false</li>
+	</ul></li>
+</ul>
+<h2><b>Rules/Conventions for naming Variables</b></h2>
+<ul>
+	<li>Case Sensitive</li>
+	<li>Begin w/ letter, then #'s & symbols</li>
+	<li>NO SPACE</li>
+	<li>Full, meaningful names</li>
+	<li>Single Word
+	<ul>
+		<li>All lower case</li>
+	</ul>
+	</li>
+	<li>Multiple Words
+	<ul>
+		<li>lowerThenUpper</li>
+	</ul>
+	</li>
+	<li>Constants
+	<ul>
+		<li>ALL_UPPER</li>
+	</ul>
+	</li>
+</ul>
+<h2><b>Variable Declaration</b></h2>
+<ul>
+	<li>int roomNumber = 247;</li>
+	<li>Declaration:<ul><li>int roomNumber;</li><li>int age</li><li>char letter</li><li>boolean inLove</li></ul></li>
+	<li>Assigning<ul><li>age = 20; &nbsp age=21;</li><li>letter = 'f';</li><li>inLove = true;</li></ul></li>
+</ul>
+<h1>Day 3</h1>
+<h2><b>Concatanation</b></h2>
+<ul>
+	<li>Combines two strings
+	<ul>
+		<li>int age=17;</li>
+		<li>System.out.print("I am "+ age + "years old.");</li>
+		<li>System.out.print("If you're typing a lot of words and" + " need another line, you can cancatanate" + "multiple strings.");</li>
+	</ul>
+	</li>
+</ul>
+<h2><b>Arithmetic Operators</b></h2>
+<ul>
+	<li> + - * / % </li>
+	<li> PEMD(Remainder)AS </li>
+</ul>
+<b>Using variables in addition: </b><br></br>
+<code>int x = 5; <br></br>
+int y = 4; <br></br> 
+x = x + 2xy; <br></br>
+ //cannot put in parenthesis normally <br></br>
+x = 2*(x+y); <br></br>
+int z = x+y; <br></br> 
+Sout(x+" " + y + " " + z); <br></br>
+Sout(x + y + z);</code>
+<h1>Day 4</h1>
+<h2><b>Mixed Mode Arithmetic</b></h2>
+<ul>
+	<li>Integers always yield integers, may truncate decimals</li>
+	<li>Doublies yield doubles, overrule integers</li>
+	<li>Automatically promotes to large data type or a floating point</li>
+</ul>
+<ol>
+	<li><code>int a = 3/2 * 5; //five</code></li>
+	<li><code>double b = 3/2 *5; //5.0</code></li>
+	<li><code>double c = 3.0/2 * 5; //7.5</code></li>
+	<li><code>int d = 3.0/2 * 5; //7</code></li>
+	<li><code>double e = 3.0/2 * 5 //ERROR</code></li>
+	<li><code>double f = 3/2* 5.0; //5.0</code></li>
+</ol>
+<h2><b>Remainder Operator % (modulus)</b></h2>
+<ol>
+	<li>3 % 2 = 1</li>
+	<li> 16 % 12 = 4</li>
+	<li>35 % 5 = 0</li>
+	<li> 17 % 2 = 1</li>
+	<li>63 % 24 = 15</li>
+</ol>
+<h2><b>Casting</b></h2>
+<ul>
+	<li>Converts from one data type to another</li>
+	<li><code>int x = (int) 3.14; //x = 3</code></li>
+	<li><code>int y = (int) (3/2 * 5.0); //5</code></li>
+	<li><code>int z = (int)3/2 *5;</code>//5.0, ERROR</li>
+</ul>
+
+</div>
+</body>
+</html>
